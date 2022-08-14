@@ -1,0 +1,25 @@
+     
+     {%extends 'main.html' %}
+     {%load static%}
+     {%block title%} register{%endblock%}
+     {%block content%}
+        <div class="container ">
+            <div class="row ">
+             
+    
+                <div class="col-md-6 m-auto">
+                    <form class="log-form" action="" method="POST" novalidate>
+                        {%csrf_token%}
+                        {%include 'form.html' %}
+                        <button class="add_photo-btn add_photo-btn2 mt-5" type="submit">register</button>
+                     </form>
+                </div>
+             
+    
+      
+        </div>
+        </div>
+    
+   
+     {%endblock%}
+  

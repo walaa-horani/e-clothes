@@ -1,0 +1,106 @@
+{%extends 'main.html' %}
+{%load static%}
+</ul>
+
+
+{%block content%}
+{% load mptt_tags %}
+<section class="hero" style="background-image:url(../static/img/back.jpg);height:100vh;background-position:center;background-size:cover;width:100%;     z-index: -1;  margin-top:-86px;">
+    <div class="container">
+       
+            <div class="">
+                <div class="head-btn ">
+                    <a class="first-btn" href="">shop now <i class="fa-solid fa-arrow-right ml-2 "></i></a>
+                    <a class="second-btn" href="">all products <i class="fa-solid fa-arrow-right ml-2 "></i></a>
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+        
+    </div>
+</section>
+<ul>
+  <section class="categories">
+
+
+<div class="container">
+    <div class="row">
+        {% recursetree category %}
+        <div class="col-md-6 mb-3">
+            
+                    <a href="category/{{node.id}}/{{node.slug}}">
+            <div class="img-overlay">
+
+           
+          <img  src=" {{ node.image.url }}" alt="">
+         
+         <div class="overlay">
+          
+        </div>
+        <h4>{{node.name}}</h4>
+    </div>
+</a>
+        </div>
+        {% endrecursetree %}
+    </div>
+</div>
+</section>
+
+
+
+<section class="carousel-section">
+<div class="container">
+    <div class="title">
+        <h4>take a look at our shop</h4>
+    </div>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{%static 'img/1.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{%static 'img/2.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{%static 'img/3.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{%static 'img/4.jpg' %}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+</div>
+</section>
+
+<section class="latest">
+<div class="container">
+    <div class="title">
+        <h4>latest products</h4>
+    </div>
+   
+    <div class="owl-carousel owl-theme mt-5">
+        {%for pro in products%}
+        {%if pro.latest == True%}
+        <div class="item">
+           
+                <a href="{%url 'details' pro.id %}">
+                    <img src="{{pro.image.url}}" alt="">
+                  
+                 </a>
+          
+      
+        </div>
+        {%endif%}
+        {%endfor%}
+    </div>
+   
+</div>
+</section>
+{%endblock%}

@@ -1,0 +1,8 @@
+{%for rs in products%}
+
+
+
+
+{{rs.name}}
+ <a href="{%url 'details' rs.id %}">  <img src="{{rs.image.url}}" alt=""></a> 
+{%endfor%}
